@@ -5,7 +5,7 @@ NPC ou player -> se player -> acesso aos comandos, se não -> comportamento de N
 
 
 player = POV.Lucas
-spd = 5
+spd = 3
 hspd = 0
 vspd = 0
 
