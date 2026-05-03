@@ -1,0 +1,17 @@
+{
+  "FolderOrderSettings":[
+    {"name":"artes","order":4,"path":"folders/artes.yy",},
+    {"name":"colisores","order":8,"path":"folders/objetos/colisores.yy",},
+    {"name":"controladores","order":6,"path":"folders/objetos/controladores.yy",},
+    {"name":"Players","order":7,"path":"folders/objetos/Players.yy",},
+    {"name":"rooms","order":2,"path":"folders/rooms.yy",},
+    {"name":"scripts","order":1,"path":"folders/scripts.yy",},
+    {"name":"sons","order":3,"path":"folders/sons.yy",},
+  ],
+  "ResourceOrderSettings":[
+    {"name":"oEntities","order":1,"path":"objects/oEntities/oEntities.yy",},
+    {"name":"oManu","order":1,"path":"objects/oManu/oManu.yy",},
+    {"name":"oPlayer","order":2,"path":"objects/oPlayer/oPlayer.yy",},
+    {"name":"cPlayerBase","order":1,"path":"scripts/cPlayerBase/cPlayerBase.yy",},
+  ],
+}
