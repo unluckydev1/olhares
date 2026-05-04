@@ -1,3 +1,4 @@
+global.reading = true
 text_width = (guiw - 128)/1.25
 text_height = guih/4
 
@@ -23,15 +24,15 @@ txtb_spr = sSquareTextbox
 txtb_img = 0
 txtb_img_spd = 6/60
 
-
+selected = 0
 assigned_portrait = noone
 portrait = false
 setup = false
 
 father = noone
 
-
-choose_dialogue = function(pos){
+choosing = false
+/*choose_dialogue = function(pos){
     
     for(var i = 0; i < array_length(father.texts[0][pos]); i ++){
         text[i] = father.texts[0][pos][i]
@@ -41,7 +42,7 @@ choose_dialogue = function(pos){
     draw_char = 0
     setup = false
     choices = false
-}
+}*/
 
 
 
@@ -50,11 +51,11 @@ choose_dialogue = function(pos){
 text= [
     {
         text: "lorem ipsum",
-        speaker: POV.Lucas
+        speaker: "Lucas"
     },
     {
         text: "oi meu nome é meu cavalo",
-        speaker: POV.Lucas
+        speaker: "Lucas"
     }
 ]
 #endregion

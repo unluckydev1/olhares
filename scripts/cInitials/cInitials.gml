@@ -8,3 +8,4 @@ enum POV{
 
 
 global.player = POV.Lucas
+global.reading = false

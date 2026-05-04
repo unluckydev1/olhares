@@ -37,6 +37,7 @@
     {"id":{"name":"oLucas","path":"objects/oLucas/oLucas.yy",},},
     {"id":{"name":"oManu","path":"objects/oManu/oManu.yy",},},
     {"id":{"name":"oPlayer","path":"objects/oPlayer/oPlayer.yy",},},
+    {"id":{"name":"oTeste","path":"objects/oTeste/oTeste.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"id":{"name":"cInitials","path":"scripts/cInitials/cInitials.yy",},},
     {"id":{"name":"cPlayerBase","path":"scripts/cPlayerBase/cPlayerBase.yy",},},

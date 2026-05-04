@@ -30,22 +30,26 @@ if draw_char < text_length[page]{
     }*/
 }
 
-if accept_key{
+if accept_key and (choosing == false){
     
     if draw_char == text_length[page]{
+        
+        if !(variable_struct_exists(text[page],"choices")) and (variable_struct_exists(text[page],"next")){
+            if (text[page].next == -1){
+                global.reading = false
+                instance_destroy()
+            }else{
+                page = text[page].next - 1
+            }
+        }
                                   
         if page < page_number - 1{
             page ++;
             draw_char = 0
         }
         else{
-            
-            if choices{
-                choose_dialogue(0)
-            }else{
-                global.reading = false
-                instance_destroy()
-            }
+            global.reading = false
+            instance_destroy()
         }
     }else{
         draw_char = text_length[page]
@@ -89,42 +93,51 @@ switch(last_char){
 }
 
 draw_set_color(#190E01)
+
 draw_text_ext(textbox_x + text_x_offset[page] + borderx, textbox_y + bordery, _drawtext, line_sep, line_width);
 draw_set_color(c_white)
+choosing = false
+if draw_char = text_length[page]{
+    if (variable_struct_exists(text[page],"choices")) {
+        
+        var len = array_length(text[page].choices) 
+        if keyboard_check_pressed(vk_up){
+           selected ++;
+        }
+        if keyboard_check_pressed(vk_down){
+           selected --;
+        }   
+        selected = clamp(selected,0,len - 1)    
+        for(var i = 0; i < len; i ++){
+            if (selected == i){
+               draw_set_colour(c_yellow)
+            }
+            draw_text_ext(textbox_x + text_x_offset[page] + borderx, textbox_y + bordery - 96 - 30*i, text[page].choices[i].text, 100, 100 )   
+            show_debug_message(selected)
+            draw_set_colour(c_white)
+            }
+            if keyboard_check_pressed(vk_enter){
+                var p = page
+                page = text[page].choices[selected].next() - 1
+                text[p].choices[selected].flagged = true
+                draw_char = 0
+                choosing = false
+            }
+        choosing = true 
+        }
+}
 
+
+draw_text_ext_transformed(textbox_x + text_x_offset[page] + borderx, textbox_y + bordery - 64, text[page].speaker, 20, 20, 1.5, 1.5, 0)
 
 if portrait = true{
     var _x = textbox_x + text_width + 32
     var _y = textbox_y
     draw_sprite_ext(assigned_portrait,0,_x,_y,2.15,2.15,0,c_white,1)
 }
-/*
+
 if choices and page = array_length(text) - 1 and draw_char == text_length[page]{
     
     
-    for(var i = 0; i < array_length(father.texts[0]);i++){ 
-        
-        var _text = father.texts[1][i]
-        
-        draw_set_color(#190E01)
-        
-        if select = i draw_set_color(c_yellow)
-            
-        draw_text(textbox_x + text_x_offset[page] + borderx,textbox_y - bordery*2 - 16*i,_text)
-        
-        draw_set_color(c_white)
-    }
-    if keyboard_check_pressed(vk_up){
-        select --;
-    }
-    if keyboard_check_pressed(vk_down){
-        select ++;
-    }
-    if select < 0 select = array_length(father.texts[0]) - 1
-    if select > array_length(father.texts[0]) - 1 select = 0   
-    
-    if keyboard_check_pressed(vk_enter){
-        choose_dialogue(select)
-    }
     
 }
