@@ -9,6 +9,7 @@
     {"name":"sons","order":3,"path":"folders/sons.yy",},
   ],
   "ResourceOrderSettings":[
+    {"name":"oCamera","order":4,"path":"objects/oCamera/oCamera.yy",},
     {"name":"oDialogo","order":3,"path":"objects/oDialogo/oDialogo.yy",},
     {"name":"oEntities","order":1,"path":"objects/oEntities/oEntities.yy",},
     {"name":"oManu","order":1,"path":"objects/oManu/oManu.yy",},

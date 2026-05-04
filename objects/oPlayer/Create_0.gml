@@ -26,6 +26,7 @@ idle = function(){
 }
 npc = function(){
 	hspd = 0
+    vspd = 0
 	//vspd = sin(get_timer()/100000)/2
 	colisao()
 }

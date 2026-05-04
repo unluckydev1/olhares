@@ -30,6 +30,7 @@
   "name":"Olhares",
   "resources":[
     {"id":{"name":"fnt_1","path":"fonts/fnt_1/fnt_1.yy",},},
+    {"id":{"name":"oCamera","path":"objects/oCamera/oCamera.yy",},},
     {"id":{"name":"oColisao","path":"objects/oColisao/oColisao.yy",},},
     {"id":{"name":"oControlador","path":"objects/oControlador/oControlador.yy",},},
     {"id":{"name":"oDialogo","path":"objects/oDialogo/oDialogo.yy",},},
