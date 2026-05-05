@@ -15,7 +15,8 @@
     {"name":"oManu","order":1,"path":"objects/oManu/oManu.yy",},
     {"name":"oPlayer","order":2,"path":"objects/oPlayer/oPlayer.yy",},
     {"name":"oTeste","order":3,"path":"objects/oTeste/oTeste.yy",},
-    {"name":"cPlayerBase","order":1,"path":"scripts/cPlayerBase/cPlayerBase.yy",},
+    {"name":"rmSalaVidro","order":1,"path":"rooms/rmSalaVidro/rmSalaVidro.yy",},
+    {"name":"cDialogues","order":1,"path":"scripts/cDialogues/cDialogues.yy",},
     {"name":"sSquareTextbox","order":1,"path":"sprites/sSquareTextbox/sSquareTextbox.yy",},
   ],
 }

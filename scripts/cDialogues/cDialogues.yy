@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"cPlayerBase",
+  "%Name":"cDialogues",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"cPlayerBase",
+  "name":"cDialogues",
   "parent":{
     "name":"scripts",
     "path":"folders/scripts.yy",

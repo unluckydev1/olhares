@@ -112,16 +112,16 @@ if draw_char = text_length[page]{
             if (selected == i){
                draw_set_colour(c_yellow)
             }
-            draw_text_ext(textbox_x + text_x_offset[page] + borderx, textbox_y + bordery - 96 - 30*i, text[page].choices[i].text, 100, 100 )   
+            draw_text_ext(textbox_x + text_x_offset[page] + borderx, textbox_y + bordery - 96 - 30*i, text[page].choices[i].text, 1000, 1000 )   
             show_debug_message(selected)
             draw_set_colour(c_white)
             }
             if keyboard_check_pressed(vk_enter){
                 var p = page
                 page = text[page].choices[selected].next() - 1
-                text[p].choices[selected].flagged = true
                 draw_char = 0
                 choosing = false
+                selected = 0
             }
         choosing = true 
         }
