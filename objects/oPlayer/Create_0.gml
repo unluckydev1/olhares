@@ -2,6 +2,7 @@ event_inherited()
 /* logica:
 NPC ou player -> se player -> acesso aos comandos, se não -> comportamento de NPC personalizado
 */
+textP = 0
 text = false
 if !(Dialogo == -1){
     text = G.dialogues[Dialogo]
@@ -38,6 +39,8 @@ npc = function(){
             if keyboard_check_pressed(ord("E")){
                 var inst = instance_create_layer(x,y,layer,oDialogo)
                 inst.text = text
+                inst.father = self.id
+                inst.page = textP
             }
         }
     }

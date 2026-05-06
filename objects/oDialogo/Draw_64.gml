@@ -32,16 +32,24 @@ if draw_char < text_length[page]{
 
 if accept_key and (choosing == false){
     
+    
+    
     if draw_char == text_length[page]{
         
+        if (text[page].newstart != undefined){ 
+            father.textP = text[page].newstart - 1
+            //show_message(text[page].newstart) 
+        }
+             
         if !(variable_struct_exists(text[page],"choices")) and (variable_struct_exists(text[page],"next")){
-            if (text[page].next == -1){
-                global.reading = false
-                instance_destroy()
+            if (text[page].next <= 0){
+                destroy()
             }else{
                 page = text[page].next - 1
             }
         }
+        
+        
                                   
         if page < page_number - 1{
             page ++;
@@ -122,13 +130,17 @@ if draw_char = text_length[page]{
                 draw_char = 0
                 choosing = false
                 selected = 0
+                
+                if page < 0{
+                    destroy()
+                }
             }
         choosing = true 
         }
 }
 
 
-draw_text_ext_transformed(textbox_x + text_x_offset[page] + borderx, textbox_y + bordery - 64, text[page].speaker, 20, 20, 1.5, 1.5, 0)
+if page > 0 draw_text_ext_transformed(textbox_x + text_x_offset[page] + borderx, textbox_y + bordery - 64, text[page].speaker, 20, 20, 1.5, 1.5, 0)
 
 if portrait = true{
     var _x = textbox_x + text_width + 32
@@ -136,8 +148,3 @@ if portrait = true{
     draw_sprite_ext(assigned_portrait,0,_x,_y,2.15,2.15,0,c_white,1)
 }
 
-if choices and page = array_length(text) - 1 and draw_char == text_length[page]{
-    
-    
-    
-}

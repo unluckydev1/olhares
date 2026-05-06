@@ -1,3 +1,42 @@
+// --- Info de dialogos
+enum NomesConhecidos{
+    Lucas,
+    Manu,
+    size
+}
+G.nomes = array_create(NomesConhecidos.size)
+// --- Funções de Atalho para Facilitar a Escrita ---
+function Texto(_speaker, _text, _next = -1, _newstart = undefined){
+    return {
+        speaker: _speaker,
+        text: _text,
+        next: _next - 1, 
+        newstart: _newstart
+    };
+}
+function NewStart(_index ){
+    var D = oDialogo
+    D.father.TextP = _index
+    return(_index)
+}
+function Escolhas(_speaker, _text, _array_choices) {
+    return {
+        speaker: _speaker,
+        text: _text,
+        choices: _array_choices,
+        next: -1
+    };
+}
+
+function Opcao(_text, _next_func) {
+    return {
+        text: _text,
+        flagged: false,
+        next: _next_func
+    };
+}
+
+// --- Funções de Lógica do Sistema ---
 function Flag(){
     var D = oDialogo
     var _page = D.page
@@ -5,6 +44,7 @@ function Flag(){
     var _select = D.selected
     _arr[_select].flagged = true
 }
+
 function RemoveChoice(){
     var D = oDialogo
     var _page = D.page
@@ -14,129 +54,82 @@ function RemoveChoice(){
         variable_struct_remove(D.text[_page], "choices")
         return 0
     }
-    _arr = array_delete(_arr,_select,1)
-    
+    _arr = array_delete(_arr, _select, 1)
 }
+
 function GetLen(){
     var D = oDialogo
     var _page = D.page
     var _arr = D.text[_page].choices
-    var _select = D.selected
     return array_length(_arr)
 }
+
+// --- Montagem do Diálogo ---
+Dialogo_Teste = [
+    // Índice 0
+    Escolhas("Manu", "... ", [
+        Opcao("Oi ablubluble", function() { RemoveChoice(); return 2; }),
+        Opcao("Coal seu nome", function() { RemoveChoice(); return 5; }),
+        Opcao("blublublublu", function() { RemoveChoice(); return 9; }),
+        Opcao("xau", function() { if (GetLen() == 1) RemoveChoice(); return 11; })
+    ]),
+    
+
+    Texto("Manu", "Oi ablubluble", 2),
+    Texto("Lucas", "Oi, concordo em partes", 3),
+    Texto("Manu", "Tabom", 0),
+    Texto("Manu", "Coal Seu nome", 5),
+    
+
+    Escolhas("Lucas", "Acho que é Lucas", [
+        Opcao("Que merda", function() { return 7; }),
+        Opcao("Que foda", function() { return 8; })
+    ]),
+    
+
+    Texto("Lucas", "se mata", 0),
+    Texto("Lucas", "hihi", 0),
+    Texto("Manu", "blublublu", 9),
+    Texto("Lucas", "blublublublu", 0),
+    Texto("Manu", "xau", 11),
+    Texto("Lucas", "xau", -1)
+];
+#region sala de vidro
+var _nome = "???"
 Dialogo_SalaVidro = [
-    {
-        text: "... ",
-        choices:[ 
-            {
-                text:"Oi ablubluble",
-                flagged: false,
-                next: function(){
-                    RemoveChoice()
-                    return 2
-                } 
-            },
-            {
-                text:"Coal seu nome",
-                flagged: false,
-                next: function(){
-                    RemoveChoice()
-                    return 5
-                    
-                } 
-            },
-            {
-                text:"blublublublu",
-                flagged:false,
-                next: function(){
-                    RemoveChoice()
-                    return 9
-                }
-            },
-            {
-                text:"xau",
-                flagged:false,
-                next: function(){
-                    
-                    if (GetLen() == 1 ) RemoveChoice()
-                    return 11
-                }
-            }
-        ],
-        speaker: "Manu",
-        next: -1
-    },
-    {
-        text:"Oi ablubluble",
-        speaker: "Manu",
-        next: 2
-    },
-    {
-        text: "Oi, concordo em partes",
-        speaker:"Lucas",
-        next: 3
-    },
-    {
-        text: "Tabom",
-        speaker:"Manu",
-        next: 0
-    },
-    {
-        text:"Coal Seu nome",
-        speaker:"Manu",
-        next:5
-    },
-    {
-        text:"Acho que é Lucas",
-        choices:[ 
-            {
-                text:"Que merda",
-                flagged: false,
-                next: function(){
-                    return 7    
-                } 
-            },
-            {
-                text:"Que foda",
-                flagged: false,
-                next: function(){
-                    return 8
-                } 
-            }
-        ],
-        speaker:"Lucas"
-        
-    },
-    {
-        text:"se mata",
-        speaker:"Lucas",
-        next: 0
-    },
-    {
-        text:"hihi",
-        speaker:"Lucas",
-        next:0
-    },
-    {
-        text:"blublublu",
-        speaker:"Manu",
-        next:9
-    },
-    {
-        text:"blublublublu",
-        speaker:"Lucas",
-        next:0
-    },
-    {
-        text:"xau",
-        speaker:"Manu",
-        next:11
-    },
-    {
-        text:"xau",
-        speaker:"Lucas",
-        next:-1
-    }
+    
+    Escolhas(" ","Ele parece observar o jogo...",[
+        Opcao("(Cutucar)", function(){ RemoveChoice(); return 2;}),
+        Opcao("Sair", function(){ return -1;})  
+    ]),
+    #region cutucar
+    Texto("Manu","(você cutuca ele)",3),
+    
+    Texto(_nome,"Oi? Vai testar o jogo?",4),
+    
+    Escolhas("Manu"," ",[
+        Opcao("É do seu grupo?", function(){return 5}),
+        Opcao("Queru testar", function(){return 9}),
+    ]),
+    
+    Texto("Manu","Esse jogo (você aponta) é do seu grupo?",6),
+    
+    Texto(_nome,"Sim, eu que programei o jogo!",7),
+      
+    Texto(" ","(você nota um entusiasmo enquanto ele fala)",8),
+    
+    Texto("???", "Eu e minha equipe fizemos esse jogo, sendo eu o programador e artista, e o resto dos caba ajudaram no roteiro, musica, essas coisas sabe?", 1, 11),
+    
+    Texto("Manu", "Queru testar sim",10),
+    
+    Texto("Lucas","Tem umas pessoas na fila ainda, espera ai...",11,11),
+    
+    Texto("Manu","ablubbblblgsdflvrlvrvgr")
+    #endregion 
+    #region 
+    
 ]
 
-G.dialogues = [Dialogo_SalaVidro] 
+
+#endregion 
+G.dialogues = [Dialogo_Teste,Dialogo_SalaVidro];

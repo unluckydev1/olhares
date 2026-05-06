@@ -29,7 +29,7 @@ assigned_portrait = noone
 portrait = false
 setup = false
 
-father = noone
+father = oDialogo
 
 choosing = false
 /*choose_dialogue = function(pos){
@@ -43,7 +43,11 @@ choosing = false
     setup = false
     choices = false
 }*/
-
+destroy = function(){
+    global.reading = false
+    instance_destroy()
+    exit;
+}
 
 
 #region teste
