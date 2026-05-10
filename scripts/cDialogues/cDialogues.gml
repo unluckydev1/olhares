@@ -7,12 +7,12 @@ enum NomesConhecidos{
 }
 G.nomes = array_create(NomesConhecidos.size)
 // --- Funções de Atalho para Facilitar a Escrita ---
-function Texto(_speaker, _text, _next = -1, _newstart = undefined){
+function Texto(_speaker, _text, _next = 0, _func = -1){
     return {
         speaker: _speaker,
         text: _text,
         next: _next - 1, 
-        newstart: _newstart
+        func: _func,
     };
 }
 function NewStart(_index ){
@@ -28,15 +28,14 @@ function Escolhas(_speaker, _text, _array_choices) {
         next: -1
     };
 }
-
-function Opcao(_text, _next_func) {
+function Opcao(_text, _next_func, _show = true) {
     return {
         text: _text,
         flagged: false,
-        next: _next_func
+        next: _next_func,
+        show: _show
     };
 }
-
 // --- Funções de Lógica do Sistema ---
 function Flag(){
     var D = oDialogo
@@ -45,7 +44,6 @@ function Flag(){
     var _select = D.selected
     _arr[_select].flagged = true
 }
-
 function RemoveChoice(){
     var D = oDialogo
     var _page = D.page
@@ -57,14 +55,25 @@ function RemoveChoice(){
     }
     _arr = array_delete(_arr, _select, 1)
 }
-
-function GetLen(){
+function GetLen(_topage = -1){
     var D = oDialogo
     var _page = D.page
+    if (_topage != -1) {_page = _topage - 1}
     var _arr = D.text[_page].choices
     return array_length(_arr)
 }
+function LastChoice(_page, num_choice = 1,_bool = 1){
+    var D = oDialogo
 
+    if (GetLen(_page) == 1){
+       D.text[_page - 1].choices[num_choice - 1].show = _bool
+    }
+}
+// --- Funções de atalho pra criação de dialogos ---
+function Create_dialogue(falas, script = -1){
+    var inst = instance_create_layer(x,y,layer,oDialogo)
+    inst.text = falas
+}
 // --- Montagem do Diálogo ---
 Dialogo_Teste = [
     // Índice 0
@@ -104,31 +113,45 @@ Dialogo_SalaVidro = [
         Opcao("Sair", function(){ return -1;})  
     ]),
     #region cutucar
-    Texto("Manu","(você cutuca ele)",3),
+    Texto("Manu","(você cutuca ele)"),
     
-    Texto(_nome,"Oi? Vai testar o jogo?",4),
+    Texto(_nome,"Oi? Vai testar o jogo?"),
     
     Escolhas("Manu"," ",[
         Opcao("É do seu grupo?", function(){return 5}),
         Opcao("Queru testar", function(){RemoveChoice();return 9; }),
     ]),
     
-    Texto("Manu","Esse jogo (você aponta) é do seu grupo?",6),
+    Texto("Manu","Esse jogo (você aponta) é do seu grupo?"),
     
-    Texto(_nome,"Sim, eu que programei o jogo!",7),
+    Texto(_nome,"Sim, eu que programei o jogo!"),
       
-    Texto(" ","(você nota um entusiasmo enquanto ele fala)",8),
+    Texto(" ","(você nota um entusiasmo enquanto ele fala)"),
     
-    Texto("???", "Eu e minha equipe fizemos esse jogo, sendo eu o programador e artista, e o resto dos caba ajudaram no roteiro, musica, essas coisas sabe?",11),
+    Texto(_nome, "Eu e minha equipe fizemos esse jogo, sendo eu o programador e artista, e o resto dos caba ajudaram no roteiro, musica, essas coisas sabe?",11),
     
-    Texto("Manu", "Queru testar sim",10),
+    Texto("Manu", "Queru testar sim"),
     
-    Texto("Lucas","Tem umas pessoas na fila ainda, espera um pouco ai",4),
+    Texto(_nome,"Tem umas pessoas na fila ainda, espera um pouco ai",4),
     
-    Escolhas("Manu","...",[
-		Opcao("Tem roblox no pc do tio?", function(){return 12;}),
-		Opcao("Faz undertale 2 ai", function(){})
-	])
+    Escolhas(_nome,"Quer saber alguma outra coisa?",[
+		Opcao("Tem roblox no pc do tio?", function(){RemoveChoice() return 12; }),
+		Opcao("Faz undertale 2 ai", function( ){RemoveChoice(); return 14; }),
+        Opcao("Colocar sacos de balinha.", function(){ return 17; }, false)
+	]),
+    
+    Texto("Manu", "Tem roblox no pc do tio tem??"),
+    
+    Texto(_nome, "tem não KKKKKKK",11, function(){LastChoice(11);}),
+     
+    Texto("Manu","Que maza, faz um undertale 2 ai."),
+    
+    Texto(" ","Ele sorri por alguns segundos, parece surpreendido..."),
+    
+    Texto(_nome,"Vou fazer sim KKKKK, esse jogo ai é inspirado em undertale",11, function(){LastChoice(11);}),
+    
+    Texto(" ","Você coloca 2 sacos de balinha vazios no bolso dele.", -1, function(){cutscene_trigger(0)})
+    
     #endregion 
     #region 
     

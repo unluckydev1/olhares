@@ -4,6 +4,8 @@
 #macro POVplayers [oLucas,oManu]
 #macro G global
 
+#macro DELTA 1000000
+
 enum POV{
 	Lucas,
 	Manu

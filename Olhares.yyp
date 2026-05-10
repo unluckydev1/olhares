@@ -12,6 +12,7 @@
   "Folders":[
     {"$GMFolder":"","%Name":"artes","folderPath":"folders/artes.yy","name":"artes","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"fontes","folderPath":"folders/fontes.yy","name":"fontes","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"animcurve","folderPath":"folders/animcurve.yy","name":"animcurve","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"objetos","folderPath":"folders/objetos.yy","name":"objetos","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"colisores","folderPath":"folders/objetos/colisores.yy","name":"colisores","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"controladores","folderPath":"folders/objetos/controladores.yy","name":"controladores","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -29,10 +30,12 @@
   },
   "name":"Olhares",
   "resources":[
+    {"id":{"name":"linearmove","path":"animcurves/linearmove/linearmove.yy",},},
     {"id":{"name":"fnt_1","path":"fonts/fnt_1/fnt_1.yy",},},
     {"id":{"name":"oCamera","path":"objects/oCamera/oCamera.yy",},},
     {"id":{"name":"oColisao","path":"objects/oColisao/oColisao.yy",},},
     {"id":{"name":"oControlador","path":"objects/oControlador/oControlador.yy",},},
+    {"id":{"name":"oCutscene","path":"objects/oCutscene/oCutscene.yy",},},
     {"id":{"name":"oDialogo","path":"objects/oDialogo/oDialogo.yy",},},
     {"id":{"name":"oEntities","path":"objects/oEntities/oEntities.yy",},},
     {"id":{"name":"oLucas","path":"objects/oLucas/oLucas.yy",},},
@@ -41,6 +44,7 @@
     {"id":{"name":"oTeste","path":"objects/oTeste/oTeste.yy",},},
     {"id":{"name":"rmSalaVidro","path":"rooms/rmSalaVidro/rmSalaVidro.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
+    {"id":{"name":"cCutscenes","path":"scripts/cCutscenes/cCutscenes.yy",},},
     {"id":{"name":"cDialogues","path":"scripts/cDialogues/cDialogues.yy",},},
     {"id":{"name":"cInitials","path":"scripts/cInitials/cInitials.yy",},},
     {"id":{"name":"sSquare","path":"sprites/sSquare/sSquare.yy",},},

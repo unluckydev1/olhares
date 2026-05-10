@@ -12,6 +12,7 @@ if setup == false{
     page_number = array_length(text)
     
     for(var p = 0; p < page_number; p ++){
+     
         
         text_length[p] = string_length(text[p].text)
         
@@ -36,26 +37,30 @@ if accept_key and (choosing == false){
     
     if draw_char == text_length[page]{
         
-        if (text[page].newstart != undefined){ 
+        /*if (text[page].newstart != undefined){ 
             father.textP = text[page].newstart - 1
             //show_message(text[page].newstart) 
+        }*/
+        if !(text[page].func == -1){
+            text[page].func()
         }
-             
-        if !(variable_struct_exists(text[page],"choices")) and (variable_struct_exists(text[page],"next")){
-            if (text[page].next <= 0){
+        
+        if !(variable_struct_exists(text[page],"choices")){
+            var _next = text[page].next
+            if (_next == -2){
                 destroy()
+            }else if (_next == -1){
+                page += 1; draw_char = 0
             }else{
-                page = text[page].next - 1
+                page = _next
+               
             }
-        }
-        
-        
-                                  
-        if page < page_number - 1{
+            
+        }else{
             page ++;
-            draw_char = 0
+            draw_char = 0;
         }
-        else{
+        if (page > page_number -1){
             global.reading = false
             instance_destroy()
         }
@@ -107,8 +112,15 @@ draw_set_color(c_white)
 choosing = false
 if draw_char = text_length[page]{
     if (variable_struct_exists(text[page],"choices")) {
-        
         var len = array_length(text[page].choices) 
+        var _arr = array_create(len)
+        array_copy(_arr,0,text[page].choices,0,len)
+        for(var i = 0; i < len; i ++){
+            if _arr[i].show = false{
+                array_delete(_arr,i,1)
+            }
+        }
+        len = array_length(_arr)
         if keyboard_check_pressed(vk_up){
            selected ++;
         }
@@ -120,17 +132,15 @@ if draw_char = text_length[page]{
             if (selected == i){
                draw_set_colour(c_yellow)
             }
-            draw_text_ext(textbox_x + text_x_offset[page] + borderx, textbox_y + bordery - 96 - 30*i, text[page].choices[i].text, 1000, 1000 )   
+            draw_text_ext(textbox_x + text_x_offset[page] + borderx, textbox_y + bordery - 96 - 30*i, _arr[i].text, 1000, 1000 )   
             show_debug_message(selected)
             draw_set_colour(c_white)
             }
             if keyboard_check_pressed(vk_enter){
-                var p = page
-                page = text[page].choices[selected].next() - 1
+                page = _arr[selected].next() - 1
                 draw_char = 0
                 choosing = false
                 selected = 0
-                
                 if page < 0{
                     destroy()
                 }
@@ -140,7 +150,7 @@ if draw_char = text_length[page]{
 }
 
 
-if page > 0 draw_text_ext_transformed(textbox_x + text_x_offset[page] + borderx, textbox_y + bordery - 64, text[page].speaker, 20, 20, 1.5, 1.5, 0)
+if page >= 0 draw_text_ext_transformed(textbox_x + text_x_offset[page] + borderx, textbox_y + bordery - 64, text[page].speaker, 20, 20, 1.5, 1.5, 0)
 
 if portrait = true{
     var _x = textbox_x + text_width + 32
