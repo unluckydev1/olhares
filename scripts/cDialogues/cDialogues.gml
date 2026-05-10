@@ -1,4 +1,5 @@
 // --- Info de dialogos
+
 enum NomesConhecidos{
     Lucas,
     Manu,
@@ -109,7 +110,7 @@ Dialogo_SalaVidro = [
     
     Escolhas("Manu"," ",[
         Opcao("É do seu grupo?", function(){return 5}),
-        Opcao("Queru testar", function(){return 9}),
+        Opcao("Queru testar", function(){RemoveChoice();return 9; }),
     ]),
     
     Texto("Manu","Esse jogo (você aponta) é do seu grupo?",6),
@@ -118,13 +119,16 @@ Dialogo_SalaVidro = [
       
     Texto(" ","(você nota um entusiasmo enquanto ele fala)",8),
     
-    Texto("???", "Eu e minha equipe fizemos esse jogo, sendo eu o programador e artista, e o resto dos caba ajudaram no roteiro, musica, essas coisas sabe?", 1, 11),
+    Texto("???", "Eu e minha equipe fizemos esse jogo, sendo eu o programador e artista, e o resto dos caba ajudaram no roteiro, musica, essas coisas sabe?",11),
     
     Texto("Manu", "Queru testar sim",10),
     
-    Texto("Lucas","Tem umas pessoas na fila ainda, espera ai...",11,11),
+    Texto("Lucas","Tem umas pessoas na fila ainda, espera um pouco ai",4),
     
-    Texto("Manu","ablubbblblgsdflvrlvrvgr")
+    Escolhas("Manu","...",[
+		Opcao("Tem roblox no pc do tio?", function(){return 12;}),
+		Opcao("Faz undertale 2 ai", function(){})
+	])
     #endregion 
     #region 
     
