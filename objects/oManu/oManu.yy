@@ -3,6 +3,7 @@
   "%Name":"oManu",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
   "name":"oManu",
@@ -33,9 +34,12 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sSquare",
-    "path":"sprites/sSquare/sSquare.yy",
+    "name":"sManu_front",
+    "path":"sprites/sManu_front/sManu_front.yy",
   },
-  "spriteMaskId":null,
+  "spriteMaskId":{
+    "name":"sManu_front",
+    "path":"sprites/sManu_front/sManu_front.yy",
+  },
   "visible":true,
 }

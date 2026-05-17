@@ -14,3 +14,5 @@ enum POV{
 
 G.player = POV.Lucas
 G.reading = false
+
+G.cutscene = false

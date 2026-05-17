@@ -9,29 +9,75 @@ if !(Dialogo == -1){
 }
 
 player = POV.Lucas
-spd = 2
+spd = 1.25
 hspd = 0
 vspd = 0
+sprites = [[]]
+change_sprite = function(){
+    if hspd = 0 and vspd = 0{
+        action = 0
+        image_xscale = scale
+        switch face{
+            case 0: sprite_index = sprites[action,face]
+                break;
+            case 1: sprite_index = sprites[action,face]
+                image_xscale = -scale
+                break;
+            case 2: sprite_index = sprites[action,face]
+                break;
+            case 3: sprite_index = sprites[action,face]
+                break;
+        }
+        
+    }else{
+        action = 1
+        image_xscale = scale
+        switch face{
+            case 0: sprite_index = sprites[action,face]
+                break;
+            case 1: sprite_index = sprites[action,face]
+                image_xscale = -scale
+                break;
+            case 2: sprite_index = sprites[action,face]
+                break;
+            case 3: sprite_index = sprites[action,face]
+                break;
+        }
+    }
+    image_yscale = abs(scale)
+}
+face = -1
+scale = 1
 
 colisao = function(){
 	move_and_collide(hspd,vspd,oColisao)
 }
 
 idle = function(){
-	var up = keyboard_check(vk_up)
-	var down = keyboard_check(vk_down)
-	var left = keyboard_check(vk_left)
-	var right = keyboard_check(vk_right)
+	var _up = keyboard_check(vk_up)
+	var _down = keyboard_check(vk_down)
+	var _left = keyboard_check(vk_left)
+	var _right = keyboard_check(vk_right)
 	
-	hspd = (right - left)*spd
-	vspd = (down - up)*spd
-	
+	hspd = (_right - _left)*spd
+	vspd = (_down - _up)*spd
+    
+    
+	if (face!=-1){
+        script_execute(change_sprite)
+        if _up face = 2
+        if _down face = 0
+        if _left face = 1
+        if _right face = 3  
+    }
 	colisao()
 }
 npc = function(){
 	hspd = 0
     vspd = 0
-    
+    if (face!=-1){
+        script_execute(change_sprite)
+    }
 	//vspd = sin(get_timer()/100000)/2
 	colisao()
     if (is_array(text)){

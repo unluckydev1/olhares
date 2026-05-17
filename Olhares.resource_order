@@ -1,8 +1,11 @@
 {
   "FolderOrderSettings":[
-    {"name":"artes","order":4,"path":"folders/artes.yy",},
-    {"name":"fontes","order":5,"path":"folders/fontes.yy",},
     {"name":"animcurve","order":6,"path":"folders/animcurve.yy",},
+    {"name":"artes","order":4,"path":"folders/artes.yy",},
+    {"name":"Players","order":2,"path":"folders/artes/Players.yy",},
+    {"name":"Lucas","order":3,"path":"folders/artes/Players/Lucas.yy",},
+    {"name":"Manu:3","order":1,"path":"folders/artes/Players/Manu:3.yy",},
+    {"name":"fontes","order":5,"path":"folders/fontes.yy",},
     {"name":"colisores","order":1,"path":"folders/objetos/colisores.yy",},
     {"name":"controladores","order":3,"path":"folders/objetos/controladores.yy",},
     {"name":"rooms","order":2,"path":"folders/rooms.yy",},
@@ -20,6 +23,14 @@
     {"name":"rmSalaVidro","order":1,"path":"rooms/rmSalaVidro/rmSalaVidro.yy",},
     {"name":"cCutscenes","order":2,"path":"scripts/cCutscenes/cCutscenes.yy",},
     {"name":"cDialogues","order":1,"path":"scripts/cDialogues/cDialogues.yy",},
+    {"name":"sManu_back_walk","order":5,"path":"sprites/sManu_back_walk/sManu_back_walk.yy",},
+    {"name":"sManu_back","order":2,"path":"sprites/sManu_back/sManu_back.yy",},
+    {"name":"sManu_front_walk","order":4,"path":"sprites/sManu_front_walk/sManu_front_walk.yy",},
+    {"name":"sManu_front","order":1,"path":"sprites/sManu_front/sManu_front.yy",},
+    {"name":"sManu_side_walk","order":6,"path":"sprites/sManu_side_walk/sManu_side_walk.yy",},
+    {"name":"sManu_side","order":3,"path":"sprites/sManu_side/sManu_side.yy",},
+    {"name":"sPad","order":3,"path":"sprites/sPad/sPad.yy",},
+    {"name":"sSombra","order":4,"path":"sprites/sSombra/sSombra.yy",},
     {"name":"sSquareTextbox","order":1,"path":"sprites/sSquareTextbox/sSquareTextbox.yy",},
   ],
 }

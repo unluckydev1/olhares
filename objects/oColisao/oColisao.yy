@@ -9,7 +9,10 @@
     "name":"colisores",
     "path":"folders/objetos/colisores.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"oEntities",
+    "path":"objects/oEntities/oEntities.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

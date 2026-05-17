@@ -1,7 +1,7 @@
 {
   "$GMSprite":"v2",
   "%Name":"sSquare",
-  "bboxMode":0,
+  "bboxMode":2,
   "bbox_bottom":31,
   "bbox_left":0,
   "bbox_right":31,
@@ -17,13 +17,13 @@
   "gridX":0,
   "gridY":0,
   "height":32,
-  "HTile":false,
+  "HTile":true,
   "layers":[
     {"$GMImageLayer":"","%Name":"a65212c9-146c-4c00-a5a6-26e6920fc818","blendMode":0,"displayName":"default","isLocked":false,"name":"a65212c9-146c-4c00-a5a6-26e6920fc818","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"sSquare",
   "nineSlice":null,
-  "origin":9,
+  "origin":7,
   "parent":{
     "name":"artes",
     "path":"folders/artes.yy",

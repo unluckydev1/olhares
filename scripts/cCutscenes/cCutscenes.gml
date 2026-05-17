@@ -1,3 +1,16 @@
+function start_act(){ 
+    with(oCutscene){
+        global.cutscene = true;
+        end_act()
+    }
+}
+function wait_in(time){
+    timer += delta_time /  1000000;
+    if (timer > time)
+    {
+        end_act();
+    }
+}
 function cutscene_trigger(_cutscene){
     with(oCutscene){
     oCutscene.cutscene = G.cutscenes[_cutscene]
@@ -21,8 +34,26 @@ function end_cutscene(){
         act_scene = 0
         cutscene = []
     }
+    G.cutscene = false
 }
 
+function change_spr(obj,sprite){
+    with(oCutscene){
+        obj.sprite_index = sprite;
+        end_act()
+    }
+}
+function change_face(obj,face,walk,dir = 1){
+    with(oCutscene){
+        obj.face = face
+        obj.scale = dir
+        if(walk) {obj.hspd = 1; obj.vspd = 1}
+        obj.change_sprite()
+        obj.hspd = 0;
+        obj.vspd = 0;
+        end_act()
+    }
+}
 function move_add(obj,_x,_y,time,curve_type = linearmove){
     with(oCutscene){
     if (!start)
@@ -42,6 +73,7 @@ function move_add(obj,_x,_y,time,curve_type = linearmove){
     obj.x = startx + distx*_pos
     obj.y = starty + disty*_pos
     show_debug_message(timer)
+    
     if (timer > time)
     {
         end_act();
@@ -50,9 +82,11 @@ function move_add(obj,_x,_y,time,curve_type = linearmove){
 }
 
 function move_to(obj,_x,_y,time,curve_type = linearmove){
+    
     with(oCutscene){
     if (!start)
     {
+        
         startx = obj.x
         starty = obj.y
         distx = _x - startx
@@ -76,7 +110,7 @@ function move_to(obj,_x,_y,time,curve_type = linearmove){
 }
 function player_change(player){
     G.player = player
-    end_act()
+    end_act() 
 }
 function new_dialogue(text){
     with(oCutscene){ 
@@ -91,17 +125,22 @@ function new_dialogue(text){
     }
 }
 Cutscene1=[
+    function(){start_act()},
+    function(){change_face(oManu,1,true)},
     function(){move_to(oManu,730,oManu.y,1)},
-    function(){move_to(oManu,oManu.x,380,1)},
+    function(){change_face(oManu,0,true)},
+    function(){move_to(oManu,oManu.x,350,1)},
+    function(){change_face(oManu,1,true,-1)},
     function(){move_to(oManu,860,oManu.y,1)},
+    function(){change_face(oManu,0,true)},
     function(){move_add(oManu,0,200,1)}, 
     function(){player_change(POV.Lucas)},
     function(){new_dialogue([
         Texto("Lucas ", "uh, oque é isso?..."),
         Texto("","Ao colocar as mãos no bolso você sente duas embalagens de doces..."),
         Texto(" ","vazias..."),
-        Texto("Lucas","ah, por isso ela sorriu antes de sair KKKKKKK"),
-        Texto("Lucas","ate que eu queria falar mais com ela... mina gente boa",-1)
+        Texto("Lucas","ah, por isso ela sorriu antes de sair"),
+        Texto("Lucas","ate que eu queria falar mais com ela... mina legal",-1)
     ])},
     function(){end_cutscene()}
 ]
